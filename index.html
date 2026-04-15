@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>God Of Server | Elite Cyber Tools</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 30%, #0a0f1e, #03060c);
+            font-family: 'Poppins', sans-serif;
+            color: #eef5ff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #111927; }
+        ::-webkit-scrollbar-thumb { background: #00e0ff; border-radius: 8px; }
+
+        /* GLOW & ANIMATIONS */
+        @keyframes pulseGlow {
+            0% { text-shadow: 0 0 2px #0ff, 0 0 5px #0ff; }
+            100% { text-shadow: 0 0 12px #0ff, 0 0 20px #00aaff; }
+        }
+        @keyframes matrixRain {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 100%; }
+        }
+        @keyframes borderFlow {
+            0% { border-image: linear-gradient(45deg, #0ff, #f0f) 1; }
+            100% { border-image: linear-gradient(135deg, #f0f, #0ff) 1; }
+        }
+
+        .glow-text {
+            font-family: 'Orbitron', monospace;
+            animation: pulseGlow 1.8s infinite alternate;
+        }
+
+        /* header / navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 40px;
+            background: rgba(5, 10, 20, 0.75);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .logo h1 {
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #aaffff, #3c6eff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo span {
+            font-size: 0.8rem;
+            color: #6c8eff;
+            letter-spacing: 2px;
+        }
+        .channel-links {
+            display: flex;
+            gap: 20px;
+        }
+        .channel-btn {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid #0ff;
+            padding: 8px 18px;
+            border-radius: 40px;
+            text-decoration: none;
+            color: cyan;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        .channel-btn:hover {
+            background: #0ff;
+            color: #000;
+            box-shadow: 0 0 15px cyan;
+            transform: scale(1.02);
+        }
+
+        /* hero section */
+        .hero {
+            text-align: center;
+            padding: 40px 20px 30px;
+        }
+        .hero h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            max-width: 700px;
+            margin: 15px auto;
+        }
+
+        /* main container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 30px 50px;
+        }
+
+        /* cards grid */
+        .grid-2col {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .card {
+            background: rgba(12, 20, 30, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 28px;
+            border: 1px solid rgba(0, 255, 255, 0.25);
+            padding: 25px;
+            flex: 1;
+            min-width: 280px;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        }
+        .card:hover {
+            border-color: #0ff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        .card-title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border-left: 4px solid #0ff;
+            padding-left: 15px;
+            font-family: 'Orbitron', monospace;
+        }
+
+        /* whatsapp number adder */
+        .input-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .input-group input {
+            flex: 2;
+            background: #0e1622;
+            border: 1px solid #2c3e66;
+            padding: 14px 18px;
+            border-radius: 40px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.2s;
+        }
+        .input-group input:focus {
+            border-color: #0ff;
+            box-shadow: 0 0 8px cyan;
+        }
+        .btn-primary {
+            background: linear-gradient(95deg, #0c2b5e, #0a4c6e);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 40px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+            border: 1px solid rgba(0,255,255,0.5);
+        }
+        .btn-primary:hover {
+            background: #0ff;
+            color: #000;
+            box-shadow: 0 0 10px cyan;
+        }
+        .number-list {
+            margin-top: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .num-badge {
+            background: #07121f;
+            display: inline-block;
+            margin: 6px 8px;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            border-left: 2px solid cyan;
+        }
+        .num-badge i {
+            margin-right: 6px;
+            color: cyan;
+        }
+
+        /* location hacking simulation */
+        .loc-sim {
+            margin: 20px 0;
+        }
+        .fake-loc-btn {
+            width: 100%;
+            margin: 12px 0;
+            background: #1b2a3f;
+        }
+        .loc-result {
+            background: #010a13;
+            padding: 14px;
+            border-radius: 20px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            border: 1px dashed cyan;
+        }
+        .country-select {
+            background: #0e1622;
+            border: 1px solid #2c3e66;
+            padding: 12px;
+            border-radius: 40px;
+            color: white;
+            width: 100%;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+        .hack-animation {
+            color: #0ff;
+            font-weight: bold;
+        }
+
+        /* Countries hacking section (multi) */
+        .country-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .country-chip {
+            background: #0f1b2b;
+            padding: 8px 18px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: 500;
+            border: 1px solid #2c4f6e;
+        }
+        .country-chip.active {
+            background: cyan;
+            color: black;
+            border-color: white;
+            box-shadow: 0 0 8px cyan;
+        }
+        .country-chip:hover {
+            background: #0ff;
+            color: #000;
+        }
+
+        /* footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(0,255,255,0.2);
+            margin-top: 50px;
+        }
+
+        @media (max-width: 760px) {
+            .navbar { flex-direction: column; text-align: center; }
+            .container { padding: 20px; }
+            .card-title { font-size: 1.4rem; }
+        }
+
+        .blink {
+            animation: blinkAnime 1s infinite;
+        }
+        @keyframes blinkAnime {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        .status-msg {
+            font-size: 0.8rem;
+            margin-top: 8px;
+        }
+        i.fa, i.fab {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">
+        <h1>⚡ GOD OF SERVER ⚡</h1>
+        <span>│ elite cyber suite │</span>
+    </div>
+    <div class="channel-links">
+        <a href="https://whatsapp.com/channel/0029VbBzzOlLCoX2qMi3e20x" target="_blank" class="channel-btn"><i class="fab fa-whatsapp"></i> WhatsApp Channel</a>
+        <a href="https://www.youtube.com/@NIKIYA-MOD" target="_blank" class="channel-btn"><i class="fab fa-youtube"></i> YouTube Channel</a>
+    </div>
+</div>
+
+<div class="hero">
+    <h2 class="glow-text">🌍 SPOOF • TRACE • LOCATE 🌍</h2>
+    <p>Add WhatsApp numbers • Inject Location Data • Hacking Simulation | Multi-Country Nodes: Sri Lanka, India, Japan, Korea, Bangladesh, USA</p>
+</div>
+
+<div class="container">
+    <div class="grid-2col">
+        <!-- LEFT CARD: WhatsApp Number Manager -->
+        <div class="card">
+            <div class="card-title"><i class="fab fa-whatsapp"></i> WA Number Vault</div>
+            <p>Add & store target numbers (demo simulation). Use international format.</p>
+            <div class="input-group">
+                <input type="text" id="waNumberInput" placeholder="e.g., +94771234567 or 94771234567" autocomplete="off">
+                <button class="btn-primary" id="addNumberBtn"><i class="fas fa-plus-circle"></i> Add Number</button>
+            </div>
+            <div class="number-list" id="numberListContainer">
+                <div class="status-msg" style="color:#88aaff;"><i class="fas fa-database"></i> No numbers added yet.</div>
+            </div>
+            <div class="status-msg" id="waStatusMsg"></div>
+            <small><i class="fas fa-shield-alt"></i> encrypted storage • demo only</small>
+        </div>
+
+        <!-- RIGHT CARD: Location Hacking + Country Selector -->
+        <div class="card">
+            <div class="card-title"><i class="fas fa-map-marker-alt"></i> LOCATION HACK ENGINE</div>
+            <p>Spoof geo-location & simulate advanced hacking. Choose target country.</p>
+            <div class="country-panel" id="countryPanel">
+                <!-- dynamic country chips will be here, but static list works -->
+            </div>
+            <div class="loc-sim">
+                <button id="hackLocationBtn" class="btn-primary fake-loc-btn"><i class="fas fa-skull-crossbones"></i> EXECUTE HACK: SPOOF LOCATION</button>
+                <button id="resetLocationBtn" class="btn-primary fake-loc-btn" style="background:#2c2f36;"><i class="fas fa-undo-alt"></i> Reset / Clear Spoof</button>
+                <div class="loc-result" id="locResultDisplay">
+                    <i class="fas fa-globe"></i> No active spoof — location is hidden.
+                </div>
+            </div>
+            <small><i class="fas fa-exclamation-triangle"></i> Ethical hacking simulation — educational purpose only.</small>
+        </div>
+    </div>
+
+    <!-- ADDITIONAL SECTION: COUNTRY WIDE SERVER NODES -->
+    <div class="card" style="margin-top: 30px;">
+        <div class="card-title"><i class="fas fa-network-wired"></i> ACTIVE COUNTRY NODES • GOD MODE</div>
+        <p>Inject fake GPS coordinates & routing info for Sri Lanka, India, Japan, Korea, Bangladesh, USA.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: space-between; align-items: center;">
+            <div style="flex:2">
+                <select id="globalCountrySelect" class="country-select">
+                    <option value="Sri Lanka">🇱🇰 Sri Lanka (Colombo)</option>
+                    <option value="India">🇮🇳 India (Mumbai/Delhi)</option>
+                    <option value="Japan">🇯🇵 Japan (Tokyo)</option>
+                    <option value="Korean">🇰🇷 Korea (Seoul)</option>
+                    <option value="Bangladesh">🇧🇩 Bangladesh (Dhaka)</option>
+                    <option value="USA">🇺🇸 USA (New York/LA)</option>
+                </select>
+                <button id="injectCountryNode" class="btn-primary" style="margin-top: 10px;"><i class="fas fa-satellite-dish"></i> Inject Country Node & Spoof</button>
+            </div>
+            <div style="flex:3; background: #05121e; padding: 12px; border-radius: 20px;">
+                <div id="nodeStatus"><i class="fas fa-microchip"></i> Ready. Select a country to override location.</div>
+            </div>
+        </div>
+        <div class="loc-result" id="advancedLocDisplay" style="margin-top: 20px;">
+            🌐 Current Spoof Target: <span id="activeSpoofCountry">None</span> | 📡 Coordinates: <span id="activeCoords">—</span>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <i class="fas fa-terminal"></i> God Of Server — Cyber Intelligence Suite | All simulations are for authorized testing & educational demos only.
+</div>
+
+<script>
+    // ---------- GLOBALS ----------
+    let whatsappNumbers = [];   // store numbers
+
+    // location spoof state
+    let activeSpoof = {
+        country: null,
+        lat: null,
+        lng: null,
+        city: null
+    };
+
+    // Country dataset with realistic coords & cities (hacking simulation)
+    const countryData = {
+        "Sri Lanka": { lat: 6.9271, lng: 79.8612, city: "Colombo", flag: "🇱🇰" },
+        "India": { lat: 28.6139, lng: 77.2090, city: "New Delhi", flag: "🇮🇳" },
+        "Japan": { lat: 35.6895, lng: 139.6917, city: "Tokyo", flag: "🇯🇵" },
+        "Korean": { lat: 37.5665, lng: 126.9780, city: "Seoul", flag: "🇰🇷" },
+        "Bangladesh": { lat: 23.8103, lng: 90.4125, city: "Dhaka", flag: "🇧🇩" },
+        "USA": { lat: 40.7128, lng: -74.0060, city: "New York", flag: "🇺🇸" }
+    };
+
+    // render whatsapp number list
+    function renderNumberList() {
+        const container = document.getElementById('numberListContainer');
+        if (!container) return;
+        if (whatsappNumbers.length === 0) {
+            container.innerHTML = `<div class="status-msg" style="color:#88aaff;"><i class="fas fa-database"></i> No numbers added yet.</div>`;
+            return;
+        }
+        let html = '';
+        whatsappNumbers.forEach((num, idx) => {
+            html += `<div class="num-badge"><i class="fab fa-whatsapp"></i> ${escapeHtml(num)} <i class="fas fa-lock" style="font-size:10px; margin-left:5px;"></i></div>`;
+        });
+        container.innerHTML = html;
+    }
+
+    function escapeHtml(str) {
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    // add number logic
+    function addWhatsAppNumber() {
+        const inputEl = document.getElementById('waNumberInput');
+        let rawNumber = inputEl.value.trim();
+        if (rawNumber === "") {
+            showStatusMsg("waStatusMsg", "❌ Please enter a phone number!", "error");
+            return;
+        }
+        // basic formatting: ensure plus sign if digits start without +
+        let formatted = rawNumber;
+        if (!rawNumber.startsWith('+') && /^\d+$/.test(rawNumber)) {
+            formatted = '+' + rawNumber;
+        }
+        // simple duplicate check
+        if (whatsappNumbers.includes(formatted)) {
+            showStatusMsg("waStatusMsg", "⚠️ Number already exists in vault.", "warn");
+            return;
+        }
+        whatsappNumbers.push(formatted);
+        renderNumberList();
+        showStatusMsg("waStatusMsg", `✅ ${formatted} added to secure vault.`, "success");
+        inputEl.value = "";
+        setTimeout(() => {
+            const msgDiv = document.getElementById('waStatusMsg');
+            if(msgDiv) msgDiv.innerHTML = '';
+        }, 2000);
+    }
+
+    function showStatusMsg(elementId, msg, type) {
+        const el = document.getElementById(elementId);
+        if (!el) return;
+        let color = "#bbffbb";
+        if (type === "error") color = "#ffaaaa";
+        if (type === "warn") color = "#ffdd88";
+        el.innerHTML = `<span style="color:${color};">${msg}</span>`;
+        setTimeout(() => {
+            if(el.innerHTML === `<span style="color:${color};">${msg}</span>`) el.innerHTML = '';
+        }, 2200);
+    }
+
+    // UPDATE location display
+    function updateLocationUI() {
+        const locDisplay = document.getElementById('locResultDisplay');
+        const activeSpoofCountrySpan = document.getElementById('activeSpoofCountry');
+        const activeCoordsSpan = document.getElementById('activeCoords');
+        if (!locDisplay) return;
+        if (activeSpoof.country && activeSpoof.lat) {
+            const flag = countryData[activeSpoof.country]?.flag || "🌐";
+            locDisplay.innerHTML = `<i class="fas fa-radar"></i> 🎯 HACK SUCCESSFUL | Spoofed Location: <strong>${flag} ${activeSpoof.country}</strong> — ${activeSpoof.city} (${activeSpoof.lat.toFixed(4)}, ${activeSpoof.lng.toFixed(4)})<br><span class="blink"><i class="fas fa-skull"></i> GPS signal hijacked | node active</span>`;
+            if(activeSpoofCountrySpan) activeSpoofCountrySpan.innerText = `${activeSpoof.country} ${flag}`;
+            if(activeCoordsSpan) activeCoordsSpan.innerText = `${activeSpoof.lat.toFixed(4)}, ${activeSpoof.lng.toFixed(4)}`;
+        } else {
+            locDisplay.innerHTML = `<i class="fas fa-globe"></i> No active spoof — location is hidden or default.`;
+            if(activeSpoofCountrySpan) activeSpoofCountrySpan.innerText = "None";
+            if(activeCoordsSpan) activeCoordsSpan.innerText = "—";
+        }
+        // also update advanced display
+        const advSpanCountry = document.getElementById('activeSpoofCountry');
+        const advCoordSpan = document.getElementById('activeCoords');
+        if(advSpanCountry && advCoordSpan) {
+            if(activeSpoof.country) {
+                advSpanCountry.innerText = `${activeSpoof.country} ${countryData[activeSpoof.country]?.flag || ''}`;
+                advCoordSpan.innerText = `${activeSpoof.lat?.toFixed(5) || '?'}, ${activeSpoof.lng?.toFixed(5) || '?'}`;
+            } else {
+                advSpanCountry.innerText = "None";
+                advCoordSpan.innerText = "—";
+            }
+        }
+    }
+
+    // HACK LOCATION function (based on selected country from chips OR manual)
+    function hackLocation(countryKey) {
+        const data = countryData[countryKey];
+        if (!data) {
+            showStatusMsg("waStatusMsg", "⚠️ Invalid country selection", "error");
+            return false;
+        }
+        // Simulation effect: randomize slight offset for "advanced hack"
+        let latOffset = (Math.random() * 0.05) - 0.025;
+        let lngOffset = (Math.random() * 0.05) - 0.025;
+        let finalLat = data.lat + latOffset;
+        let finalLng = data.lng + lngOffset;
+        activeSpoof = {
+            country: countryKey,
+            lat: finalLat,
+            lng: finalLng,
+            city: data.city
+        };
+        updateLocationUI();
+        // extra node status message
+        const nodeStatusDiv = document.getElementById('nodeStatus');
+        if(nodeStatusDiv) {
+            nodeStatusDiv.innerHTML = `<i class="fas fa-check-circle"></i> [GOD MODE] Location overwritten: ${countryKey} ${data.flag} | ${data.city} | Coordinates injected.`;
+            setTimeout(() => {
+                if(nodeStatusDiv.innerHTML.includes("overwritten"))
+                    nodeStatusDiv.innerHTML = `<i class="fas fa-microchip"></i> Ready. Select a country to override location.`;
+            }, 3000);
+        }
+        showStatusMsg("waStatusMsg", `🔥 LOCATION HACKED: ${countryKey} (${data.city})`, "success");
+        return true;
+    }
+
+    function resetSpoof() {
+        activeSpoof = { country: null, lat: null, lng: null, city: null };
+        updateLocationUI();
+        const nodeStatusDiv = document.getElementById('nodeStatus');
+        if(nodeStatusDiv) nodeStatusDiv.innerHTML = `<i class="fas fa-microchip"></i> Location spoof cleared. Back to stealth mode.`;
+        showStatusMsg("waStatusMsg", "🛡️ Location reset. No active spoof.", "warn");
+    }
+
+    // create country chips inside countryPanel
+    function buildCountryChips() {
+        const panel = document.getElementById('countryPanel');
+        if(!panel) return;
+        const countries = ["Sri Lanka", "India", "Japan", "Korean", "Bangladesh", "USA"];
+        panel.innerHTML = '';
+        countries.forEach(cnt => {
+            const chip = document.createElement('div');
+            chip.className = 'country-chip';
+            const flag = countryData[cnt]?.flag || '🌍';
+            chip.innerHTML = `${flag} ${cnt}`;
+            chip.addEventListener('click', () => {
+                // hack location on chip click
+                hackLocation(cnt);
+                // highlight active chip
+                document.querySelectorAll('.country-chip').forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+            });
+            panel.appendChild(chip);
+        });
+    }
+
+    // inject from dropdown + button
+    function setupInjector() {
+        const injectBtn = document.getElementById('injectCountryNode');
+        const selectEl = document.getElementById('globalCountrySelect');
+        if(injectBtn && selectEl) {
+            injectBtn.addEventListener('click', () => {
+                const selectedCountry = selectEl.value;
+                hackLocation(selectedCountry);
+                // also highlight matching chip if exists
+                const chips = document.querySelectorAll('.country-chip');
+                chips.forEach(chip => {
+                    if(chip.innerText.includes(selectedCountry)) {
+                        chips.forEach(c => c.classList.remove('active'));
+                        chip.classList.add('active');
+                    }
+                });
+            });
+        }
+    }
+
+    // extra: for hack location button (middle card)
+    function setupHackButton() {
+        const hackBtn = document.getElementById('hackLocationBtn');
+        if(hackBtn) {
+            hackBtn.addEventListener('click', () => {
+                // if we have active country from last selection or default pick first? We can get currently selected country from dropdown as fallback.
+                const select = document.getElementById('globalCountrySelect');
+                let targetCountry = "Sri Lanka";
+                if(activeSpoof.country) {
+                    targetCountry = activeSpoof.country;
+                } else if(select && select.value) {
+                    targetCountry = select.value;
+                }
+                hackLocation(targetCountry);
+                // sync chip active
+                const chips = document.querySelectorAll('.country-chip');
+                chips.forEach(chip => {
+                    if(chip.innerText.includes(targetCountry)) {
+                        chips.forEach(c => c.classList.remove('active'));
+                        chip.classList.add('active');
+                    }
+                });
+            });
+        }
+        const resetBtn = document.getElementById('resetLocationBtn');
+        if(resetBtn) resetBtn.addEventListener('click', resetSpoof);
+    }
+
+    // initial numbers example demo: preload nothing, but maybe add one demo number? optional
+    function demoExample() {
+        // just add one example number for showcase but not intrusive
+        // but we keep it empty for clarity. Option: if you want demo: but user can add.
+        // but to make interface feel active: no forced numbers.
+        // Display empty list nicely
+        renderNumberList();
+    }
+
+    // init
+    function init() {
+        buildCountryChips();
+        setupInjector();
+        setupHackButton();
+        const addBtn = document.getElementById('addNumberBtn');
+        if(addBtn) addBtn.addEventListener('click', addWhatsAppNumber);
+        document.getElementById('waNumberInput')?.addEventListener('keypress', (e) => {
+            if(e.key === 'Enter') addWhatsAppNumber();
+        });
+        demoExample();
+        updateLocationUI();
+        // set default status
+        const nodeStat = document.getElementById('nodeStatus');
+        if(nodeStat) nodeStat.innerHTML = `<i class="fas fa-microchip"></i> Ready. Select a country to override location.`;
+    }
+
+    init();
+</script>
+</body>
+</html>
